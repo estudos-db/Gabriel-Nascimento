@@ -10,7 +10,7 @@ public class ValidadorCPFTest {
     void verificandoUmCPFCerto(){
 
         //CPF gerado para TESTE, mas que passa na verificação pois é uma combinação valida
-        Assertions.assertTrue(validadorCPF.valida("46214930004"));
+        Assertions.assertTrue(validadorCPF.valida("80204582040"));
     }
 
     @Test
