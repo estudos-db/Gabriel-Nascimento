@@ -14,26 +14,29 @@ public class SomaElementosTest {
 
     @BeforeEach
     void inicializa(){
-        lista = new ArrayList<>();
-        lista.add(1);
-        lista.add(2);
-        lista.add(3);
-        lista.add(4);
-        lista.add(5);
+        lista = new ArrayList<>(List.of(3, 6, 5, 1, 8));
         somaElementos = new SomaElementos();
     }
 
     @Test
-    void deveRetornarTrue(){
-        K = 6;
+    void deveRetornarTrueExisteCombinacaoQueResultaEmK(){
+        K = 16;
 
-        Assertions.assertTrue(somaElementos.somaElementos(lista, K));
+        Assertions.assertTrue(somaElementos.somaCombinacaoElementos(lista, K));
     }
 
     @Test
-    void deveRetornarFalse(){
-        K = 10;
+    void deveRetornarFalseNaoExisteCombinacaoQueResultaEmK(){
+        K = 30;
 
-        Assertions.assertFalse(somaElementos.somaElementos(lista, K));
+        Assertions.assertFalse(somaElementos.somaCombinacaoElementos(lista, K));
+    }
+
+    @Test
+    void deveRetornarFalseListaVazia(){
+        K = 30;
+        lista.clear();
+
+        Assertions.assertFalse(somaElementos.somaCombinacaoElementos(lista, K));
     }
 }
