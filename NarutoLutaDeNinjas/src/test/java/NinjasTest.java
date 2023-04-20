@@ -12,31 +12,31 @@ public class NinjasTest {
     private final ByteArrayOutputStream stringMostrada = new ByteArrayOutputStream();
 
     @BeforeEach
-    void inicializa(){
+    void inicializa() {
         ninjaGenjutsu = new NinjaDeGenjutsu("Itachi", 18, "Folha", 150);
         System.setOut(new PrintStream(stringMostrada));
     }
 
     @Test
-    void usaOMetodoUsarJutsuEMostraMensagem(){
+    void usaOMetodoUsarJutsuEMostraMensagem() {
         ninjaGenjutsu.usarJutsu();
         Assertions.assertEquals("Usando um jutsu de Genjutsu\r\n", stringMostrada.toString());
     }
 
     @Test
-    void usaOMetodoDesviarEMostraMensagem(){
+    void usaOMetodoDesviarEMostraMensagem() {
         ninjaGenjutsu.desviar();
         Assertions.assertEquals("Desviando de um ataque usando Genjutsu\r\n", stringMostrada.toString());
     }
 
     @Test
-    void aumentaChakraDoNinja(){
+    void aumentaChakraDoNinja() {
         ninjaGenjutsu.aumentaChakra(50);
         Assertions.assertEquals(200, ninjaGenjutsu.getChakra());
     }
 
     @Test
-    void adicionandoJutsusNoArrayDeJutsus(){
+    void adicionandoJutsusNoArrayDeJutsus() {
         ninjaGenjutsu.adicionaJutsu("Tsukuyomi");
         Assertions.assertEquals(1, ninjaGenjutsu.getJutsus().length);
     }

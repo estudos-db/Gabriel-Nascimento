@@ -12,7 +12,7 @@ public class Personagem {
 
     private int totalDeJutsus = 0;
 
-    public Personagem(String nome, int idade, String aldeia, int chakra){
+    public Personagem(String nome, int idade, String aldeia, int chakra) {
         this.nome = nome;
         this.idade = idade;
         this.aldeia = aldeia;
@@ -20,9 +20,9 @@ public class Personagem {
         this.chakra = chakra;
     }
 
-    public void adicionaJutsu(String jutsu){
+    public void adicionaJutsu(String jutsu) {
 
-        if(jutsus.length <= totalDeJutsus){
+        if (jutsus.length <= totalDeJutsus) {
             jutsus = Arrays.copyOf(jutsus, jutsus.length + 1);
         }
 
@@ -30,7 +30,7 @@ public class Personagem {
         totalDeJutsus++;
     }
 
-    public void aumentaChakra(int valorAumento){
+    public void aumentaChakra(int valorAumento) {
         this.chakra += valorAumento;
     }
 

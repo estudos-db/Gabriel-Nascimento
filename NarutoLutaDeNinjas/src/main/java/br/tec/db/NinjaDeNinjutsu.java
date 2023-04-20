@@ -1,9 +1,9 @@
 package br.tec.db;
 
-public class NinjaDeNinjutsu extends Personagem implements Ninja{
+public class NinjaDeNinjutsu extends Personagem implements Ninja {
 
-    public NinjaDeNinjutsu(String nome, int idade, String aldeia, int chakra){
-        super(nome, idade, aldeia,chakra);
+    public NinjaDeNinjutsu(String nome, int idade, String aldeia, int chakra) {
+        super(nome, idade, aldeia, chakra);
     }
 
     @Override
