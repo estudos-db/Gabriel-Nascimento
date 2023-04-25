@@ -27,44 +27,47 @@ public class LutaDeNinjasTest {
     }
 
     @Test
-    void umNinjaAtacaOutroEPerdeChakra() {
-        int chakraEsperado = lee.getChakra() - lee.getJutsus().get("furacaoDaFolha").getConsumoDeChakra();
-
-        lee.usarJutsu("furacaoDaFolha", naruto);
-
-        Assertions.assertEquals(chakraEsperado, lee.getChakra());
-    }
-
-    @Test
-    void ninjaAtacadoPerdeVida() {
-        int vidaPerdidaEsperada = naruto.getVida() - lee.getJutsus().get("furacaoDaFolha").getDano();
-
-        Personagem.setPossibilidadeDeDesviar(1);
-        lee.usarJutsu("furacaoDaFolha", naruto);
-
-        Assertions.assertEquals(vidaPerdidaEsperada, naruto.getVida());
-    }
-
-    @Test
-    void ninjaAtacaEOutroDesvia() {
-        int vidaEsperada = naruto.getVida();
-        int chakraEsperado = lee.getChakra() - lee.getJutsus().get("furacaoDaFolha").getConsumoDeChakra();
+    void atacaOutroNinjaEEleDesvia(){
+        int vidaOutroNinjaEsperada = naruto.getVida();
+        int chakraPerdidoDeQuemAtacou = lee.getChakra() - lee.getJutsus().get("furacaoDaFolha").getConsumoDeChakra();
 
         Personagem.setPossibilidadeDeDesviar(2);
         lee.usarJutsu("furacaoDaFolha", naruto);
 
-        Assertions.assertEquals(vidaEsperada, naruto.getVida());
-        Assertions.assertEquals(chakraEsperado, lee.getChakra());
+        Assertions.assertEquals(vidaOutroNinjaEsperada, naruto.getVida());
+        Assertions.assertEquals(chakraPerdidoDeQuemAtacou, lee.getChakra());
     }
 
     @Test
-    void ninjaAtacadoFicaComZeroDeVidaMesmoSeForDanoAlto() {
-        int vidaEsperada = 0;
+    void atacaOutroNinja(){
+        int vidaOutroNinjaEsperada = naruto.getVida() - lee.getJutsus().get("furacaoDaFolha").getDano();
+        int chakraPerdidoDeQuemAtacou = lee.getChakra() - lee.getJutsus().get("furacaoDaFolha").getConsumoDeChakra();
 
         Personagem.setPossibilidadeDeDesviar(1);
-        lee.getJutsus().get("furacaoDaFolha").setDano(1000);
         lee.usarJutsu("furacaoDaFolha", naruto);
 
-        Assertions.assertEquals(vidaEsperada, naruto.getVida());
+        Assertions.assertEquals(vidaOutroNinjaEsperada, naruto.getVida());
+        Assertions.assertEquals(chakraPerdidoDeQuemAtacou, lee.getChakra());
+    }
+    @Test
+    void atacaOutroNinjaAteZerarAVida(){
+        int vidaOutroNinjaEsperada = 0;
+
+        Personagem.setPossibilidadeDeDesviar(1);
+        lee.getJutsus().get("furacaoDaFolha").setDano(101);
+        lee.usarJutsu("furacaoDaFolha", naruto);
+
+        Assertions.assertEquals(vidaOutroNinjaEsperada, naruto.getVida());
+    }
+
+    @Test
+    void ninjaTentaAtacarSemChakraSuficiente(){
+        int chakraEsperado = lee.getChakra();
+
+        Personagem.setPossibilidadeDeDesviar(1);
+        lee.getJutsus().get("furacaoDaFolha").setConsumoDeChakra(101);
+        lee.usarJutsu("furacaoDaFolha", naruto);
+
+        Assertions.assertEquals(chakraEsperado, lee.getChakra());
     }
 }

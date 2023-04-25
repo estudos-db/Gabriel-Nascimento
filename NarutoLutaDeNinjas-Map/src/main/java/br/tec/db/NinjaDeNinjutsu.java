@@ -8,29 +8,24 @@ public class NinjaDeNinjutsu extends Personagem implements Ninja {
 
     @Override
     public void usarJutsu(String jutsuKeyMap, Personagem personagemAtacado) {
-        if (this.getJutsus().containsKey(jutsuKeyMap)) {
+        if (this.verificaPelaKeySeOJutsoExisteESeTemChakra(jutsuKeyMap)
+                && personagemAtacado.verificaSeTemVida(personagemAtacado)) {
 
-            Jutsu jutsu = getJutsus().get(jutsuKeyMap);
-
-            if(verificaSeTemChakra(jutsu)) {
-                System.out.println(getNome() + " atacando usando Ninjutsu\n");
-                perdeChakra(jutsu.getConsumoDeChakra());
-
-                if (personagemAtacado.validaAVidaAposDano(jutsu)) {
-                    if (desviar()) {
-                        jutsu.atacaOutroNinja(personagemAtacado);
-                    } else {
-                        System.out.println(personagemAtacado.getNome() + " desviou\n");
-                    }
-                }
+            System.out.println(this.getNome() + " atacando o " + personagemAtacado.getNome());
+            if (!desviar()) {
+                this.atacaOutroNinja(jutsuKeyMap, personagemAtacado);
             }else{
-                System.out.println(getNome() + " sem chakra");
+                this.perdeChakra(this.getJutsus().get(jutsuKeyMap).getConsumoDeChakra());
             }
         }
     }
 
     @Override
     public boolean desviar() {
-        return chanceDeDesviar() % 2 != 0;
+        if (super.chanceDeDesviar() % 2 == 0) {
+            System.out.println("-> Desviou");
+            return true;
+        }
+        return false;
     }
 }

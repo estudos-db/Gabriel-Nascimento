@@ -18,12 +18,12 @@ public class Jutsu {
         this.dano = dano;
     }
 
-    public int getConsumoDeChakra() {
-        return consumoDeChakra;
+    public void setConsumoDeChakra(int consumoDeChakra) {
+        this.consumoDeChakra = consumoDeChakra;
     }
 
-    public void atacaOutroNinja(Personagem personagem) {
-        personagem.perdeVida(this.getDano());
+    public int getConsumoDeChakra() {
+        return consumoDeChakra;
     }
 
     @Override
