@@ -27,7 +27,7 @@ public class LutaDeNinjasTest {
     }
 
     @Test
-    void atacaOutroNinjaEEleDesvia(){
+    void atacaOutroNinjaEEleDesvia() {
         int vidaOutroNinjaEsperada = naruto.getVida();
         int chakraPerdidoDeQuemAtacou = lee.getChakra() - lee.getJutsus().get("furacaoDaFolha").getConsumoDeChakra();
 
@@ -39,7 +39,7 @@ public class LutaDeNinjasTest {
     }
 
     @Test
-    void atacaOutroNinja(){
+    void atacaOutroNinja() {
         int vidaOutroNinjaEsperada = naruto.getVida() - lee.getJutsus().get("furacaoDaFolha").getDano();
         int chakraPerdidoDeQuemAtacou = lee.getChakra() - lee.getJutsus().get("furacaoDaFolha").getConsumoDeChakra();
 
@@ -49,8 +49,9 @@ public class LutaDeNinjasTest {
         Assertions.assertEquals(vidaOutroNinjaEsperada, naruto.getVida());
         Assertions.assertEquals(chakraPerdidoDeQuemAtacou, lee.getChakra());
     }
+
     @Test
-    void atacaOutroNinjaAteZerarAVida(){
+    void atacaOutroNinjaAteZerarAVida() {
         int vidaOutroNinjaEsperada = 0;
 
         Personagem.setPossibilidadeDeDesviar(1);
@@ -61,7 +62,7 @@ public class LutaDeNinjasTest {
     }
 
     @Test
-    void ninjaTentaAtacarSemChakraSuficiente(){
+    void ninjaTentaAtacarSemChakraSuficiente() {
         int chakraEsperado = lee.getChakra();
 
         Personagem.setPossibilidadeDeDesviar(1);
